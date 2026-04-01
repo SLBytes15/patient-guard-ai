@@ -66,6 +66,16 @@ export default function Analyzer() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  // Auto-fill drugs from Rx Scanner navigation
+  useEffect(() => {
+    const state = location.state as { prefillDrugs?: string[] } | null;
+    if (state?.prefillDrugs && state.prefillDrugs.length > 0) {
+      setSelectedDrugs((prev) => appendUniqueEntries(prev, state.prefillDrugs!));
+      toast({ title: "Medicines loaded from Rx Scanner", description: `${state.prefillDrugs.length} medicine(s) added.` });
+      window.history.replaceState({}, document.title);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   const addEntries = useCallback((entries: string[]) => {
     setSelectedDrugs((prev) => appendUniqueEntries(prev, entries));
     setInputValue("");
