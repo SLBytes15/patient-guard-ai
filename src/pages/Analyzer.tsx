@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, Shield, AlertTriangle, CheckCircle2, Info, ChevronDown, Pill, Activity, Loader2, User, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
