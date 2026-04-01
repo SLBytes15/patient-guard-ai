@@ -27,6 +27,7 @@ import { abhaPatients, getPatientByAbhaId, type ABHAPatient } from "@/data/abhaP
 import { checkConditionSafety, type ConditionWarning, type ConditionSafetyResult } from "@/services/conditionSafetyService";
 
 export default function Analyzer() {
+  const location = useLocation();
   const { toast } = useToast();
   const [selectedDrugs, setSelectedDrugs] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState("");
