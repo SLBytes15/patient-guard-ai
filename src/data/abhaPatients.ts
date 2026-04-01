@@ -1,7 +1,3 @@
-/**
- * Mock ABHA (Ayushman Bharat Health Account) patient dataset
- */
-
 export interface ABHAPatient {
   abha_id: string;
   name: string;
@@ -11,55 +7,16 @@ export interface ABHAPatient {
 }
 
 export const abhaPatients: ABHAPatient[] = [
-  {
-    abha_id: "ABHA001",
-    name: "Rahul Sharma",
-    age: 52,
-    gender: "Male",
-    conditions: ["hypertension"],
-  },
-  {
-    abha_id: "ABHA002",
-    name: "Priya Patel",
-    age: 45,
-    gender: "Female",
-    conditions: ["kidney disease"],
-  },
-  {
-    abha_id: "ABHA003",
-    name: "Amit Singh",
-    age: 60,
-    gender: "Male",
-    conditions: ["diabetes", "hypertension"],
-  },
-  {
-    abha_id: "ABHA004",
-    name: "Neha Gupta",
-    age: 34,
-    gender: "Female",
-    conditions: ["asthma"],
-  },
-  {
-    abha_id: "ABHA005",
-    name: "Vikram Reddy",
-    age: 28,
-    gender: "Male",
-    conditions: [],
-  },
-  {
-    abha_id: "ABHA006",
-    name: "Sunita Devi",
-    age: 65,
-    gender: "Female",
-    conditions: ["kidney disease", "diabetes"],
-  },
-  {
-    abha_id: "ABHA007",
-    name: "Rajesh Kumar",
-    age: 48,
-    gender: "Male",
-    conditions: ["hypertension", "asthma"],
-  },
+  { abha_id: "ABHA001", name: "Rahul Sharma", age: 52, gender: "Male", conditions: ["hypertension"] },
+  { abha_id: "ABHA002", name: "Priya Verma", age: 45, gender: "Female", conditions: ["diabetes"] },
+  { abha_id: "ABHA003", name: "Amit Patel", age: 60, gender: "Male", conditions: ["kidney disease"] },
+  { abha_id: "ABHA004", name: "Sneha Iyer", age: 30, gender: "Female", conditions: ["asthma"] },
+  { abha_id: "ABHA005", name: "Vikram Singh", age: 55, gender: "Male", conditions: ["hypertension", "diabetes"] },
+  { abha_id: "ABHA006", name: "Neha Gupta", age: 28, gender: "Female", conditions: [] },
+  { abha_id: "ABHA007", name: "Rohit Mehta", age: 65, gender: "Male", conditions: ["heart disease"] },
+  { abha_id: "ABHA008", name: "Anjali Nair", age: 40, gender: "Female", conditions: ["thyroid disorder"] },
+  { abha_id: "ABHA009", name: "Karan Malhotra", age: 35, gender: "Male", conditions: ["asthma", "hypertension"] },
+  { abha_id: "ABHA010", name: "Pooja Reddy", age: 50, gender: "Female", conditions: ["kidney disease", "diabetes"] },
 ];
 
 export function getPatientByAbhaId(abhaId: string): ABHAPatient | undefined {
