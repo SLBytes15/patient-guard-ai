@@ -49,7 +49,7 @@ export default function Index() {
               <Link to="/analyzer">Start Analysis <ArrowRight className="h-4 w-4" /></Link>
             </Button>
             <Button size="lg" variant="outline" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10" asChild>
-              <Link to="/api-docs">View API Docs</Link>
+              <Link to="/scan">Scan Prescription</Link>
             </Button>
           </motion.div>
         </div>
