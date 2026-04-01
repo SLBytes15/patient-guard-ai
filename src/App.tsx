@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Analyzer from "./pages/Analyzer";
 import ApiDocs from "./pages/ApiDocs";
 import Pricing from "./pages/Pricing";
+import PharmacyBilling from "./pages/PharmacyBilling";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
