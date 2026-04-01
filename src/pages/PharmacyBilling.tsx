@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, X, Shield, AlertTriangle, CheckCircle2, Info,
   Pill, Loader2, User, Heart, ShoppingCart, Plus, Minus,
-  Trash2, Receipt, Ban, ChevronDown,
+  Trash2, Receipt, Ban, ChevronDown, Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
