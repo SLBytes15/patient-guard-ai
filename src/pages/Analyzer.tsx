@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, Shield, AlertTriangle, CheckCircle2, Info, ChevronDown, Pill, Activity, Loader2, User, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,7 @@ import { abhaPatients, getPatientByAbhaId, type ABHAPatient } from "@/data/abhaP
 import { checkConditionSafety, type ConditionWarning, type ConditionSafetyResult } from "@/services/conditionSafetyService";
 
 export default function Analyzer() {
+  const location = useLocation();
   const { toast } = useToast();
   const [selectedDrugs, setSelectedDrugs] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState("");
@@ -63,6 +65,16 @@ export default function Analyzer() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
+
+  // Auto-fill drugs from Rx Scanner navigation
+  useEffect(() => {
+    const state = location.state as { prefillDrugs?: string[] } | null;
+    if (state?.prefillDrugs && state.prefillDrugs.length > 0) {
+      setSelectedDrugs((prev) => appendUniqueEntries(prev, state.prefillDrugs!));
+      toast({ title: "Medicines loaded from Rx Scanner", description: `${state.prefillDrugs.length} medicine(s) added.` });
+      window.history.replaceState({}, document.title);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const addEntries = useCallback((entries: string[]) => {
     setSelectedDrugs((prev) => appendUniqueEntries(prev, entries));

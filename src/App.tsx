@@ -8,6 +8,7 @@ import Analyzer from "./pages/Analyzer";
 import ApiDocs from "./pages/ApiDocs";
 import Pricing from "./pages/Pricing";
 import PharmacyBilling from "./pages/PharmacyBilling";
+import PrescriptionScanner from "./pages/PrescriptionScanner";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/analyzer" element={<Analyzer />} />
+            <Route path="/scan" element={<PrescriptionScanner />} />
             <Route path="/api-docs" element={<ApiDocs />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/billing" element={<PharmacyBilling />} />
