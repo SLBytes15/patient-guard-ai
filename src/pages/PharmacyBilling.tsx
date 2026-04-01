@@ -107,6 +107,38 @@ export default function PharmacyBilling() {
     setBillFinalized(false);
   };
 
+  // Quick test presets
+  const quickTests = [
+    { label: "Safe Combo", abha_id: "ABHA006", drugs: ["paracetamol", "vitamin c"], color: "bg-success/10 text-success border-success/30 hover:bg-success/20" },
+    { label: "Condition Risk", abha_id: "ABHA001", drugs: ["ibuprofen", "paracetamol"], color: "bg-warning/10 text-warning border-warning/30 hover:bg-warning/20" },
+    { label: "Drug Interaction", abha_id: "ABHA006", drugs: ["aspirin", "warfarin"], color: "bg-destructive/10 text-destructive border-destructive/30 hover:bg-destructive/20" },
+  ];
+
+  const loadQuickTest = (abhaId: string, drugs: string[]) => {
+    // Set patient
+    const patient = getPatientByAbhaId(abhaId);
+    if (patient) {
+      setSelectedPatient(patient);
+      setAbhaInput(abhaId);
+      setShowAbhaDropdown(false);
+    }
+    // Set drugs
+    const newItems: BillItem[] = drugs.map((drug) => ({
+      id: crypto.randomUUID(),
+      name: drug,
+      quantity: 1,
+      price: 50,
+    }));
+    setBillItems(newItems);
+    setDrugInput("");
+    setSuggestions([]);
+    setInteractionResult(null);
+    setConditionResult(null);
+    setSafetyChecked(false);
+    setBillFinalized(false);
+    toast({ title: "Quick test loaded", description: `${patient?.name ?? abhaId} + ${drugs.join(", ")}` });
+  };
+
   const addDrug = (suggestionId: string) => {
     const entries = resolveSuggestionEntries(suggestionId);
     for (const entry of entries) {
