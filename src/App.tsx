@@ -23,6 +23,7 @@ const App = () => (
             <Route path="/analyzer" element={<Analyzer />} />
             <Route path="/api-docs" element={<ApiDocs />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/billing" element={<PharmacyBilling />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
