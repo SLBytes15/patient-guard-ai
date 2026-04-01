@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, X, Shield, AlertTriangle, CheckCircle2, Info,
   Pill, Loader2, User, Heart, ShoppingCart, Plus, Minus,
-  Trash2, Receipt, Ban, ChevronDown,
+  Trash2, Receipt, Ban, ChevronDown, Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -105,6 +105,38 @@ export default function PharmacyBilling() {
     setConditionResult(null);
     setSafetyChecked(false);
     setBillFinalized(false);
+  };
+
+  // Quick test presets
+  const quickTests = [
+    { label: "Safe Combo", abha_id: "ABHA006", drugs: ["paracetamol", "vitamin c"], color: "bg-success/10 text-success border-success/30 hover:bg-success/20" },
+    { label: "Condition Risk", abha_id: "ABHA001", drugs: ["ibuprofen", "paracetamol"], color: "bg-warning/10 text-warning border-warning/30 hover:bg-warning/20" },
+    { label: "Drug Interaction", abha_id: "ABHA006", drugs: ["aspirin", "warfarin"], color: "bg-destructive/10 text-destructive border-destructive/30 hover:bg-destructive/20" },
+  ];
+
+  const loadQuickTest = (abhaId: string, drugs: string[]) => {
+    // Set patient
+    const patient = getPatientByAbhaId(abhaId);
+    if (patient) {
+      setSelectedPatient(patient);
+      setAbhaInput(abhaId);
+      setShowAbhaDropdown(false);
+    }
+    // Set drugs
+    const newItems: BillItem[] = drugs.map((drug) => ({
+      id: crypto.randomUUID(),
+      name: drug,
+      quantity: 1,
+      price: 50,
+    }));
+    setBillItems(newItems);
+    setDrugInput("");
+    setSuggestions([]);
+    setInteractionResult(null);
+    setConditionResult(null);
+    setSafetyChecked(false);
+    setBillFinalized(false);
+    toast({ title: "Quick test loaded", description: `${patient?.name ?? abhaId} + ${drugs.join(", ")}` });
   };
 
   const addDrug = (suggestionId: string) => {
@@ -239,6 +271,24 @@ export default function PharmacyBilling() {
           </motion.div>
         </div>
       </section>
+
+      {/* Quick Test Presets */}
+      <div className="container pt-6 pb-0">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground mr-1">
+              <Zap className="h-3.5 w-3.5" /> Quick Tests:
+            </div>
+            {quickTests.map((qt) => (
+              <button key={qt.label} onClick={() => loadQuickTest(qt.abha_id, qt.drugs)}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium transition-colors ${qt.color}`}>
+                <span>{qt.label}</span>
+                <span className="opacity-60">({qt.abha_id} + {qt.drugs.join(", ")})</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
 
       <main className="flex-1 container py-8">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-6">
