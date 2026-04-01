@@ -272,6 +272,24 @@ export default function PharmacyBilling() {
         </div>
       </section>
 
+      {/* Quick Test Presets */}
+      <div className="container pt-6 pb-0">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground mr-1">
+              <Zap className="h-3.5 w-3.5" /> Quick Tests:
+            </div>
+            {quickTests.map((qt) => (
+              <button key={qt.label} onClick={() => loadQuickTest(qt.abha_id, qt.drugs)}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium transition-colors ${qt.color}`}>
+                <span>{qt.label}</span>
+                <span className="opacity-60">({qt.abha_id} + {qt.drugs.join(", ")})</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <main className="flex-1 container py-8">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-6">
 
