@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Shield, Zap, Activity, Lock, Server, BarChart3, ArrowRight, Users } from "lucide-react";
+import { Shield, Zap, Activity, Lock, Server, BarChart3, ArrowRight, Users, ScanLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
