@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Shield, Zap, Activity, Lock, Server, BarChart3, ArrowRight, Users } from "lucide-react";
+import { Shield, Zap, Activity, Lock, Server, BarChart3, ArrowRight, Users, ScanLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -44,12 +44,12 @@ export default function Index() {
             RxSense detects drug interactions, flags dosage risks, and now checks patient-specific conditions via ABHA integration.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-3">
-            <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground border-0 gap-2" asChild>
-              <Link to="/analyzer">Start Analysis <ArrowRight className="h-4 w-4" /></Link>
+            className="flex flex-col sm:flex-row gap-4">
+            <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground border-0 gap-2 px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all hover:scale-105" asChild>
+              <Link to="/scan"><ScanLine className="h-5 w-5" /> Scan Prescription</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10" asChild>
-              <Link to="/scan">Scan Prescription</Link>
+            <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 gap-2" asChild>
+              <Link to="/analyzer">Start Analysis <ArrowRight className="h-4 w-4" /></Link>
             </Button>
           </motion.div>
         </div>
